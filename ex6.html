@@ -17,13 +17,23 @@
     <ul id="shopList"></ul>
 
     <script>
-        
-        // add code here
-        
-        
+        const select = document.getElementById("select_item");
+        const shopList = document.getElementById("shopList");
+
+        select.addEventListener("change", function() {
+            const value = select.value;
+
+            // check if item already exists in list
+            const exists = Array.from(shopList.getElementsByTagName("li"))
+                                .some(li => li.innerText === value);
+
+            if (!exists) {
+                const li = document.createElement("li");
+                li.innerText = value;
+                shopList.appendChild(li);
+            }
+        });
     </script>
 
-    
-
-    </body>
+</body>
 </html>
